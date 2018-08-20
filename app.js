@@ -1,8 +1,7 @@
-let TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
-let fs = require('fs');
-
+console.log('booyah')
 //fetch for bsFetch
-fetch('https://corporatebs-generator.sameerkumar.website/')
+const proxy = "https://cors-anywhere.herokuapp.com/"
+fetch(`${proxy}https://corporatebs-generator.sameerkumar.website/`)
     .then(response => response.json())
     .then(data => {
         console.log(data)
@@ -10,20 +9,32 @@ fetch('https://corporatebs-generator.sameerkumar.website/')
         return bsFetch
     })
 
- 
+//split first word from fetch
+function getPexelSearch(bsFetch) {
+    let spacePosition = str.indexOf(' ');
+    if (spacePosition === -1)
+        return str;
+    else
+        return str.substr(0, spacePosition);
+};
+//function creating image and appending it to it's bin
+//fetch(${proxy}  P E X E L)
+
+//speech to text fetch
+let TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
+let fs = require('fs');    
 const textToSpeech = new TextToSpeechV1({
   username: 'zakklepac',
   password: '!To4ster',
-  url: 'https://stream.watsonplatform.net/text-to-speech/api/'
+  url: `${proxy}https://stream.watsonplatform.net/text-to-speech/api/`
 });
 
-` 
 let params = {
-  text: '${bsFetch}',
+  text: `${bsFetch}`,
   voice: 'en-US_LisaVoice', // Optional voice
   accept: 'audio/ogg'
 };
-`
+
 // Synthesize speech, correct the wav header, then save to disk
 // (wav header requires a file length, but this is unknown until after the header is already generated and sent)
 textToSpeech
