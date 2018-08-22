@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () =>{ 
 const statement = document.getElementsByTagName('h1')[0]
-
+ fortune = "";
 function randomarray(a) {
     let i;
     for (i=a.length;i--;) {
@@ -100,9 +100,12 @@ function randomarray(a) {
   
        return toTitleCase(statement);
   }
-//fortune.appendChild(buzzword(statement))
-responsiveVoice.speak(buzzword(statement));
-
+//h1.appendChild(buzzword(statement))
+fortune = buzzword(statement)
+console.log(fortune)
+console.log(fortune)
+responsiveVoice.speak(fortune);
+console.log(fortune)
 
 /*const TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 const fs = require('fs');    
