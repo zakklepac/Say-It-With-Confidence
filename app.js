@@ -137,28 +137,5 @@ document.addEventListener("DOMContentLoaded", () =>{
     });
     */
 
-const API_KEY = 'c7730866-ad4a-4856-91f9-79d60f90b36d';
-
-var ScreenshotApi = require('screenshotapi'); // npm install screenshotapi --save
-
-var captureRequest = {
-    url: 'https://zakklepac.github.io/What-Are-You-Working-On/',
-    webdriver: 'chrome',
-    viewport: '1280x1024',
-    fullpage: false,
-    javascript: true
-};
-
-ScreenshotApi.getScreenshot(
-    'c7730866-ad4a-4856-91f9-79d60f90b36d',        // your api key
-    'https://zakklepac.github.io/What-Are-You-Working-On/', // the site to capture and your settings
-    './Desktop'            // local path to store the screenshot png
-    )
-    .then( (localFile) => {
-    console.log(`Downloaded to ${localFile}`);
-    })
-    .catch( (err) => {
-    console.error('Error capturing screenshot:', err);
-    });
 })
     
