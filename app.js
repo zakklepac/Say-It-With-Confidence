@@ -3,22 +3,23 @@ document.addEventListener("DOMContentLoaded", () =>{
     const card = document.getElementsByClassName('card')
     const fetchedImage = '<img src="https://picsum.photos/g/650/450/?random">'
         
-    function randomarray(a) {
+    function randomarray(word) {
         let i;
-        for (i=a.length; i--;) {
+        for (i=word.length; i--;) {
           let j = Math.floor((i+1) * Math.random());
-          let temp = a[i];
-          a[i] = a[j];
-          a[j] = temp;
+          let randomWord = word[i];
+          word[i] = word[j];
+          word[j] = randomWord;
         }
-      return a;
+      return word;
       }
+    
       function toTitleCase(str) {
           return str.replace(/\w\S*/g, function(txt){
               return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
           });
       }
-      
+    
       function buzzword() {
       
       let adverbs = new Array (
@@ -90,22 +91,17 @@ document.addEventListener("DOMContentLoaded", () =>{
            verbs = randomarray(verbs);
       
            let statement = adverbs[adverbs.length-1];
-           adverbs.length -= 1;
-           statement = statement + " " + verbs[verbs.length-1];
-           verbs.length -= 1;
-           statement = statement + " " + adjectives[adjectives.length-1];
-           adjectives.length -= 1;
-           statement = statement + " " + nouns[nouns.length-1];
-           nouns.length -= 1;
+           statement += " " + verbs[verbs.length-1];
+           statement += " " + adjectives[adjectives.length-1];
+           statement += " " + nouns[nouns.length-1];
       
            return toTitleCase(statement);
       }
-    
-    
+    //appending at the end playerrrrr
     fortune = buzzword(statement)
     responsiveVoice.speak(`${fortune}`, "UK English Male");
     statement.innerHTML = fortune
     card[0].innerHTML += fetchedImage
-    
+
 })
     
