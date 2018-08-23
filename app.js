@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", () =>{ 
 const statement = document.getElementsByTagName('h1')[0]
- fortune = "";
+const card = document.getElementsByClassName('card')
+const fetchedImage = '<img src="https://picsum.photos/g/600/450/?random">'
+const myBody = document.getElementsByClassName('body')[0]
+card[0].innerHTML += fetchedImage
+
 function randomarray(a) {
     let i;
     for (i=a.length;i--;) {
@@ -74,7 +78,7 @@ function randomarray(a) {
   'ideas', 'imperatives', 'infomediaries', 'information', 'infrastructures', 'initiatives', 'innovation',
   'intellectual capital', 'interfaces', 'internal or "organic" sources', 'leadership', 'leadership skills',
   'manufactured products', 'markets', 'materials', 'meta-services', 'methodologies', 'methods of empowerment', 'metrics',
-  'mindshare', 'models', 'networks', 'niches', 'niche markets', 'opportunities', '"outside the box" thinking', 'outsourcing',
+  'mindshare', 'minutiae', 'models', 'networks', 'niches', 'niche markets', 'opportunities', '"outside the box" thinking', 'outsourcing',
   'paradigms', 'partnerships', 'platforms', 'portals', 'potentialities', 'process improvements', 'processes', 'products',
   'quality vectors', 'relationships', 'resources', 'results', 'ROI', 'scenarios', 'schemas', 'services', 'solutions',
   'sources', 'strategic theme areas', 'supply chains', 'synergy', 'systems', 'technologies', 'technology',
@@ -102,10 +106,10 @@ function randomarray(a) {
   }
 //h1.appendChild(buzzword(statement))
 fortune = buzzword(statement)
-console.log(fortune)
-console.log(fortune)
+
 responsiveVoice.speak(fortune);
-console.log(fortune)
+statement.innerHTML = fortune
+
 
 /*const TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 const fs = require('fs');    
@@ -134,10 +138,24 @@ textToSpeech
     console.log('audio.wav written with a corrected ogg header');
 });
 */
-})
-
-
 
 //html2canvas(document.body).then(function(canvas) {
- ////   document.body.appendChild(canvas);
-//});
+//    document.body.appendChild(canvas);
+
+function PrintDiv(myBody)
+{
+    html2canvas((myBody), {
+        onrendered: function(canvas) {
+            var myImage = canvas.toDataURL();
+            downloadURI(myImage, "MaSimulation.png");
+      }
+    });
+}
+domtoimage.toPng(myBody).then(function (dataUrl) {
+    var img = new Image();
+    img.src = dataUrl;
+    document.body.appendChild(img);
+}).catch(function (error) {
+    console.error('oops, something went wrong!', error);
+});
+})
