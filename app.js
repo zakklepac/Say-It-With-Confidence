@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () =>{
     //h1.appendChild(buzzword(statement))
     fortune = buzzword(statement)
     
-    responsiveVoice.speak(fortune);
+    responsiveVoice.speak(`${fortune}`, "UK English Male");
     statement.innerHTML = fortune
     
     
@@ -136,6 +136,9 @@ document.addEventListener("DOMContentLoaded", () =>{
         console.log('audio.wav written with a corrected ogg header');
     });
     */
-
+   function myStorage() {
+       let currentCard = localStorage.getItem('container')
+       imgElem.setAttribute('src', currentCard)
+   }
 })
     
