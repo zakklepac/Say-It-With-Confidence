@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", () =>{
         
     function randomarray(a) {
         let i;
-        for (i=a.length;i--;) {
-          var j = Math.floor((i+1)*Math.random());
-          var temp = a[i];
+        for (i=a.length; i--;) {
+          let j = Math.floor((i+1) * Math.random());
+          let temp = a[i];
           a[i] = a[j];
           a[j] = temp;
         }
