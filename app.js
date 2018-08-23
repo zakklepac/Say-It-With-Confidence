@@ -2,9 +2,7 @@ document.addEventListener("DOMContentLoaded", () =>{
     const statement = document.getElementsByTagName('h1')[0]
     const card = document.getElementsByClassName('card')
     const fetchedImage = '<img src="https://picsum.photos/g/650/450/?random">'
-    const myBody = document.getElementsByClassName('body')[0]
-    card[0].innerHTML += fetchedImage
-    
+        
     function randomarray(a) {
         let i;
         for (i=a.length;i--;) {
@@ -91,8 +89,6 @@ document.addEventListener("DOMContentLoaded", () =>{
            adverbs = randomarray(adverbs);
            verbs = randomarray(verbs);
       
-           let x;
-      
            let statement = adverbs[adverbs.length-1];
            adverbs.length -= 1;
            statement = statement + " " + verbs[verbs.length-1];
@@ -104,41 +100,12 @@ document.addEventListener("DOMContentLoaded", () =>{
       
            return toTitleCase(statement);
       }
-    //h1.appendChild(buzzword(statement))
-    fortune = buzzword(statement)
     
+    
+    fortune = buzzword(statement)
     responsiveVoice.speak(`${fortune}`, "UK English Male");
     statement.innerHTML = fortune
+    card[0].innerHTML += fetchedImage
     
-    
-    /*const TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
-    const fs = require('fs');    
-    const textToSpeech = new TextToSpeechV1({
-    username: 'zakklepac',
-    password: '!To4ster',
-    url: `${proxy}https://stream.watsonplatform.net/text-to-speech/api/`
-    });
-    let params = {
-    text: `${fortune}`,
-    voice: 'en-US_LisaVoice',
-    accept: 'audio/wav'
-    };
-    // Synthesize speech, correct the wav header, then save to disk
-    // (ogg header requires a file length, but this is unknown until after the header is already generated and sent)
-    textToSpeech
-    .synthesize(params, function(err, audio) {
-        if (err) {
-        console.log(err);
-        return;
-        }
-        textToSpeech.repairWavHeader(audio);
-        fs.writeFileSync('audio.wav', audio);
-        console.log('audio.wav written with a corrected ogg header');
-    });
-    */
-   function myStorage() {
-       let currentCard = localStorage.getItem('container')
-       imgElem.setAttribute('src', currentCard)
-   }
 })
     
