@@ -1,7 +1,15 @@
 # What Are You Working On
-Idea Generation Service with results similar to Apples to Apples
+Idea Generation Service
 
-intended to have humorous results but also be a lil serious if you need some BS in a pinch
+Guiding principal: helping a yung programmer "fake it til he makes it"
+
+New ideas generated on refresh!
+
+Intended to have humorous results, but you never know
+
+Technologies used: JavaScript, Google Voice API
+
+Services: Picsum
 
 coming soon: a save function
 
